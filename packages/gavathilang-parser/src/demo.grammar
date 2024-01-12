@@ -1,0 +1,63 @@
+// @top File { ( Number | String | Keyword | Operator | Brackets | Element* )+ }
+
+
+@top Tree { element* }
+
+element {
+  Atom { Keyword lineEnd } |
+  Section { Keyword lineEnd Block }
+}
+
+@skip { space | Comment |
+  blankLineStart (spaces | Comment)* lineEnd}
+
+Element {
+  Atom { Keyword lineEnd } |
+  Section { Keyword lineEnd Block }
+}
+
+//!block
+
+Block { indent element+ (dedent | eof) }
+
+//!lineEnd
+
+lineEnd { newline | eof }
+
+//!context
+
+@context trackIndent from "./tokens.js"
+
+//!externalTokens
+
+@external tokens indentation from "./tokens.js" {
+  indent
+  dedent
+  blankLineStart
+}
+
+
+@tokens {
+  space { @whitespace+ }
+  Keyword { 'nahi tar jewha bhawa' | 'bol naa bhawa' | 'hello gavathilang' | 'bye gavathilang' | 'bhawa he ahe' | 'jewha bhawa' | 'asel' | 'jewha paryant bhawa' | 'ahe' | 'bhawa input de naa' | 'thamb bhawa' |  'chalu thew bhawa' | 'nahi tar bhawa' | 'nahi tar' | 'barobar' | 'chukicha' }
+  Number {
+    (@digit ("_" | @digit)* ("." @digit ("_" | @digit)*)? | "." @digit ("_" | @digit)*)
+      ($[eE] $[+\-]? @digit ("_" | @digit)*)? $[jJ]? |
+    "0" $[bB] $[_01]+ |
+    "0" $[oO] $[_0-7]+ |
+    "0" $[xX] $[_0-9a-fA-F]+
+  }
+  String { '"' !["]* '"' }
+  Comment[isolate] { "#" ![\n\r]* }
+  Operator {
+    '+' | '-' | '*' | '/' | '%' | '**' | '=' | '==' | '!=' | '<' | '>' | '<=' | '>=' | 'and' | 'or' | 'not' | 'in' | 'is'
+  }
+  Brackets {
+    '(' | ')' | '{' | '}' | '[' | ']'
+  }
+
+  newline { "\n" }
+  eof { @eof }
+  spaces { $[ \t]+ }
+
+}

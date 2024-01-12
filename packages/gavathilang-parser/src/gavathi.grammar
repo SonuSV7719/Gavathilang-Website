@@ -1,0 +1,24 @@
+@top File { ( Number | String | Keyword | Operator | Brackets )+ }
+
+@skip { space | Comment }
+
+@tokens {
+  space { @whitespace+ }
+  Keyword { 'nahi tar jewha bhawa' | 'bol naa bhawa' | 'hello gavathilang' | 'bye gavathilang' | 'bhawa he ahe' | 'jewha bhawa' | 'asel' | 'jewha paryant bhawa' | 'ahe' | 'bhawa input de naa' | 'thamb bhawa' |  'chalu thew bhawa' | 'nahi tar bhawa' | 'nahi tar' | 'barobar' | 'chukicha' | 'for' | 'while' | 'if' | 'elif' | 'else' | 'try' | 'except' | 'finally' | 'return' | 'raise' | 'break' | 'continue' | 'with' | 'pass' | 'assert' | 'await' | 'yeild' | 'match' | 'case' | 'class' | 'as' | 'import' | 'print' }
+  Number {
+    (@digit ("_" | @digit)* ("." @digit ("_" | @digit)*)? | "." @digit ("_" | @digit)*)
+      ($[eE] $[+\-]? @digit ("_" | @digit)*)? $[jJ]? |
+    "0" $[bB] $[_01]+ |
+    "0" $[oO] $[_0-7]+ |
+    "0" $[xX] $[_0-9a-fA-F]+
+  }
+  String { '"' !["]* '"' }
+  Comment[isolate] { "#" ![\n\r]* }
+  Operator {
+    '+' | '-' | '*' | '/' | '%' | '**' | '=' | '==' | '!=' | '<' | '>' | '<=' | '>=' | 'and' | 'or' | 'not' | 'in' | 'is'
+  }
+  Brackets {
+    '(' | ')' | '{' | '}' | '[' | ']'
+  }
+
+}

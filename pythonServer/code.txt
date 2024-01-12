@@ -1,0 +1,29 @@
+hello gavathilang
+# Print on terminal (Output) --> comments
+bol naa bhawa ("My name is Sonu")
+
+bol naa bhawa ("Just a fun project")
+
+# Variable declaration
+bhawa he ahe name = "Sonu Vishwakarma"
+
+bol naa bhawa (name)
+bhawa he ahe start = 0
+
+#loops  
+jewha paryant bhawa start < 10 ahe:
+    bol naa bhawa (start)
+    bhawa he ahe start += 1
+
+# Enter input
+bhawa he ahe color = bhawa input de naa ("Enter Color: ")
+
+#if... else if... else
+jewha bhawa color == "yellow" ahe:
+    bol naa bhawa ("Color Yellow")
+nahi tar jewha bhawa color == "blue" ahe:
+    bol naa bhawa("Color Blue")
+nahi tar:
+    bol naa bhawa ("Mala nahi mahit")
+
+bye gavathilang
