@@ -50,7 +50,7 @@ bye gavathilang`;
     formData.append('code_file', blob, 'code.txt');
     try {
       setLoading(true)
-      const res = await axios.post('http://localhost:5000/execute', formData);
+      const res = await axios.post('https://python-server-one.vercel.app/execute', formData);
       if (res.data.isError) {
         setIsErr(true);
       } else {
@@ -81,7 +81,7 @@ bye gavathilang`;
       <div className="flex sm:flex-row flex-col justify-between gap-10 sm:gap-0">
         <h1 className=" text-4xl font-extrabold flex justify-center items-center">Playground</h1>
         <div className=" flex flex-row justify-center items-center">
-          <button className="px-9 py-4 rounded-md bg-orange-600 font-bold hover:bg-orange-700 w-28 mr-4" onClick={run}>Run</button>
+          <button className="px-9 py-4 rounded-md bg-orange-600 font-bold hover:bg-orange-700 w-28 mr-4" onClick={run}>{loading ? <ReactLoading type='spinningBubbles' height={24} width={24} /> :  "Run"}</button>
           <button className="px-9 py-4 rounded-md bg-slate-100 font-bold hover:bg-red-200 w-28 text-orange-600" onClick={handleClear}>Clear</button>
         </div>
       </div>

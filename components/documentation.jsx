@@ -5,18 +5,35 @@ import { gavathiLang } from "@/packages/gavathilang-parser/gavathilang_highlight
 const Documentation = () => {
 
     const codes = {
-        variable: `bhawa he ahe name = "Sonu Vishwakarma"`,
-        printCode: `bol naa bhawa ("Hello World!!")`,
-        whileLoop: `bhawa he ahe start = 0
+        variable: `hello gavathilang
+
+bhawa he ahe name = "Sonu Vishwakarma"
+bol naa bhawa (name)
+
+bye gavathilang`,
+        printCode: `hello gavathilang
+
+bol naa bhawa ("Hello World!!")
+
+bye gavathilang`,
+        whileLoop: `hello gavathilang
+        
+bhawa he ahe start = 0
 jewha paryant bhawa start < 10 ahe:
     bol naa bhawa (start)
-    bhawa he ahe start += 1`,
-        ifElse: `jewha bhawa color == "yellow" ahe:
+    bhawa he ahe start += 1
+
+bye gavathilang`,
+        ifElse: `hello gavathilang
+
+bhawa he ahe color = "yellow"
+jewha bhawa color == "yellow" ahe:
     bol naa bhawa ("Color Yellow")
 nahi tar jewha bhawa color == "blue" ahe:
     bol naa bhawa("Color Blue")
 nahi tar:
     bol naa bhawa ("Mala nahi mahit")
+    
 bye gavathilang`
     }
 
@@ -60,7 +77,7 @@ bye gavathilang`
                     <CodeMirror
                         theme={vscodeDark}
                         className="py-5 sm:w-full w-80"
-                        minHeight="12rem"
+                        minHeight="18rem"
                         onChange={(data) => setCode(data)}
                         extensions={[gavathiLang()]}
                         value={codes.ifElse}
@@ -73,7 +90,7 @@ bye gavathilang`
                     <CodeMirror
                         theme={vscodeDark}
                         className="py-5 sm:w-full w-80"
-                        minHeight="12rem"
+                        minHeight="18rem"
                         onChange={(data) => setCode(data)}
                         extensions={[gavathiLang()]}
                         value={codes.whileLoop}
